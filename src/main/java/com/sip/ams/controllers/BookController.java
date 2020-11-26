@@ -76,7 +76,7 @@ public class BookController {
 	 
 	 
 	 @GetMapping("delete/{id}")
-	 public String deleteBook(@PathVariable("id") long id, Model model) {
+	 public String deleteBook(@PathVariable("id") int id, Model model) {
 	 Book book = BookRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid book Id:" +
 	id));
 	 BookRepository.delete(book);
@@ -85,7 +85,7 @@ public class BookController {
 	 }
 	 
 	 @GetMapping("edit/{id}")
-	 public String showBookFormToUpdate(@PathVariable("id") long id, Model
+	 public String showBookFormToUpdate(@PathVariable("id") int id, Model
 	model) {
 	 Book book = BookRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid book Id:" + id));
 	 model.addAttribute("book", book);
@@ -103,7 +103,7 @@ public class BookController {
 	 }
 
 	 @GetMapping("show/{id}")
-	 public String showBookDetails(@PathVariable("id") long id, Model model)
+	 public String showBookDetails(@PathVariable("id") int id, Model model)
 	{
 	 Book book = BookRepository.findById(id)
 	 .orElseThrow(()->new IllegalArgumentException("Invalid book Id:" + id));

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotBlank;
 public class Book {
 	@Id
 	 @GeneratedValue(strategy = GenerationType.AUTO)
-	 private long id;
+	 private int id;
 	 @NotBlank(message = "title is mandatory")
 	@Column(name = "title")
 	 private String title;
@@ -29,11 +29,11 @@ public class Book {
 	 @Column(name = "releaseDate")
 	 private Date releaseDate;
 	 
-	 public long getId() {
+	 public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -82,7 +82,7 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(long id, String title, float price, String author, Date releaseDate, String picture) {
+	public Book(int id, String title, float price, String author, Date releaseDate, String picture) {
 	
 		this.id = id;
 		this.title = title;
