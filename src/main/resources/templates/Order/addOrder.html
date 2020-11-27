@@ -52,8 +52,8 @@
 										<td th:text="${book.author}"></td>
 										<td th:text="${book.price}"></td>
 										<td th:text="${book.releaseDate}"></td>
-										<td><a th:href="@{/book/show/{id}(id=${book.idBook})}" class="btn btn-primary"><i class="fas fa-user-show ml-2">Show Details</i></a></td>
-										<td><input type="checkbox" name="checkid" th:value="${book.idBook}" /></td>
+										<td><a th:href="@{/book/show/{id}(id=${book.id})}" class="btn btn-primary"><i class="fas fa-user-show ml-2">Show Details</i></a></td>
+										<td><input type="checkbox" name="checkid" th:value="${book.id}" /></td>
 									</tr>
 								</tbody>
 							</table>
