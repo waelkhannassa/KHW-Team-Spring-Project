@@ -94,4 +94,10 @@ public class client {
 	@Column (name="phoneNumber")
 	//@NotBlank (message="required")
 	private int phoneNumber;
+	
+public String getln() {
+		
+		return this.getFirstName() + " "+ this.getLastName();
+		
+	}
 }
