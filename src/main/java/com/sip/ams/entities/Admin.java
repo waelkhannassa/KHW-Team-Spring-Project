@@ -4,19 +4,5 @@ import javax.persistence.Entity;
 
 @Entity 
 public class Admin extends User  {
-
-  int id ;
-  int s ;
-  
-  
-  Admin() {}
-
-
-
-
-public Admin(int id) {
-	super();
-	this.id = id;
+//admin extends
 }
-}
-
