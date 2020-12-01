@@ -11,7 +11,7 @@ public class Admin extends User  {
 
 
   int id ;
-  int s ;
+  int name;
   
   
  
