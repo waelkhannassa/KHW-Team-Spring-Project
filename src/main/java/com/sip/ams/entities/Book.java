@@ -124,8 +124,5 @@ public class Book {
 	}
 	
 	
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
-			 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name = "id_LCommande")
-	private LigneCommande LC;
+
 }
