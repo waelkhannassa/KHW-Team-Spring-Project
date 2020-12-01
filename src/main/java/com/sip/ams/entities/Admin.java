@@ -13,10 +13,11 @@ public class Admin extends User  {
 
 
 
-
 public Admin(int id) {
 	super();
 	this.id = id;
 }
+
+  
 }
 
