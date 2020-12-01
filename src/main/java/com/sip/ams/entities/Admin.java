@@ -6,4 +6,12 @@ public class Admin {
   
   
   Admin() {}
+
+
+
+public Admin(int id) {
+	super();
+	this.id = id;
+}
+  
 }
