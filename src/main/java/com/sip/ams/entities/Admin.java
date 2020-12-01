@@ -1,5 +1,5 @@
 package com.sip.ams.entities;
 
-public class Admin {
+public class Admin extends User  {
 
 }
