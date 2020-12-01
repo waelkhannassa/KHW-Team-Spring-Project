@@ -32,22 +32,22 @@ public class BookController {
 	
 	
 	@GetMapping("list")
-	@ResponseBody
+	//@ResponseBody
 	public String listbooks(Model model) {
 		List<Book> liste = (List<Book>) bookrepository.findAll();
 		if (liste.size() == 0)
 			liste = null;
 		model.addAttribute("books", liste);
-		return "koussaywaelhamza";
+		return "book/listBooks";
 	}
 	
 	
 	@GetMapping("add")
-	@ResponseBody
+	//@ResponseBody
 	public String showaddform(Model model) {
 		Book book = new Book();
 		model.addAttribute("book", book);
-		return "kzehfbvzejhf";
+		return "book/addBook";
 	}
 	
 	
