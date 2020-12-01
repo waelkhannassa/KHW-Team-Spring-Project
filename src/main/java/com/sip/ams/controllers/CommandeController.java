@@ -1,5 +1,6 @@
 package com.sip.ams.controllers;
 import java.time.LocalDate;
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,21 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.sip.ams.entities.Book;
-<<<<<<< HEAD
 
-
-=======
 import com.sip.ams.entities.Commande;
-import com.sip.ams.repository.CommandeRepository;
->>>>>>> koussay
 import com.sip.ams.repository.BookRepository;
+import com.sip.ams.repository.CommandeRepository;
 
+
+@Controller
 public class CommandeController {
-	
-<<<<<<< HEAD
-=======
 	private CommandeRepository commandeRepository;
+
 
 	private BookRepository bookrepository;
 
@@ -53,8 +49,8 @@ public class CommandeController {
 		
 	}
 	
+
 	
->>>>>>> koussay
 	
 
 }
