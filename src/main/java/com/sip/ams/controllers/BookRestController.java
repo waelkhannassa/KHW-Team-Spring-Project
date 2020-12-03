@@ -20,6 +20,7 @@ import com.sip.ams.repository.BookRepository;
 public class BookRestController {
 	@Autowired
 	private BookRepository bookRepository;
+	
 	@GetMapping("/list")
 	 public List<Book> getAllBook() {
 	 return (List<Book>) bookRepository.findAll();
@@ -29,24 +30,24 @@ public class BookRestController {
 	 return bookRepository.save(book);
 	 }
 	@PutMapping("/{bookId}")
-	 public Book updateBook(@PathVariable Long bookId, @Valid
+	 public Book updateBook(@PathVariable int bookId, @Valid
 	@RequestBody Book bookRequest) {
 	 return bookRepository.findById(bookId).map(book -> {
-	 book.setTitle(bookrRequest.getTitle());
+	 book.setTitle(bookRequest.getTitle());
 	 book.setPrice(bookRequest.getPrice());
-	 book.setAddress(providerRequest.getAddress());
-	 return providerRepository.save(provider);
-	 }).orElseThrow(() -> new ResourceNotFoundException("ProviderId " +
-	providerId + " not found"));
+	 book.setAuthor(bookRequest.getAuthor());
+	 book.setReleaseDate(bookRequest.getReleaseDate());
+	 book.setQt(bookRequest.getQt());
+	 return bookRepository.save(book);
+	 }).orElseThrow(() -> new ResourceNotFoundException("BookId " + bookId + " not found"));
 	 }
-	 @DeleteMapping("/{providerId}")
-	 public ResponseEntity<?> deleteProvider(@PathVariable Long providerId) {
-	 return providerRepository.findById(providerId).map(provider -> {
-	 providerRepository.delete(provider);
+	 @DeleteMapping("/{bookId}")
+	 public ResponseEntity<?> deleteBook(@PathVariable int bookId) {
+	 return bookRepository.findById(bookId).map(book -> {
+	 bookRepository.delete(book);
 	 return ResponseEntity.ok().build();
-	 }).orElseThrow(() -> new ResourceNotFoundException("ProviderId " +
-	providerId + " not found"));
+	 }).orElseThrow(() -> new ResourceNotFoundException("BookId " + bookId + " not found"));
 	 }
 	}
 
-}
+
