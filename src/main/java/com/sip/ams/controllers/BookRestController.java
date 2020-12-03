@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sip.ams.entities.Book;
 import com.sip.ams.exception.ResourceNotFoundException;
 import com.sip.ams.repository.BookRepository;
+import com.sip.ams.service.CommandService;
 
 @RestController
 @RequestMapping({"/books"})
@@ -48,6 +49,17 @@ public class BookRestController {
 	 return ResponseEntity.ok().build();
 	 }).orElseThrow(() -> new ResourceNotFoundException("BookId " + bookId + " not found"));
 	 }
+	 
+	 
+		@PostMapping("price")
+		public double pricetotale (@Valid @RequestBody List <Book> lb) {
+			double TotalPrice = CommandService.totalPrice(lb);
+			
+			return TotalPrice;
+			
+			
+			
+		}
 	}
 
 

@@ -12,15 +12,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.sip.ams.entities.Book;
 import com.sip.ams.entities.User;
 import com.sip.ams.entities.Commande;
 import com.sip.ams.repository.BookRepository;
 import com.sip.ams.repository.UserRepository;
+import com.sip.ams.service.CommandService;
 import com.sip.ams.repository.CommandeRepository;
 
 @Controller
@@ -62,12 +65,10 @@ public class CommandeController {
 		model.addAttribute("clients", cl);
 		List<Book> lb = (List<Book>) bookrepository.findAll();
 		model.addAttribute("books", lb);
-		//return "waa";
+		
 		return "commande/addCommande";
-		
-		
-		 
 	}
+
 
 	@PostMapping("add")
 	// @ResponseBody

@@ -41,10 +41,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll() // accès pour tous users
                 .antMatchers("/registration").permitAll() // accès pour tous users
                
-               
+               // .antMatchers("/books/**").permitAll() .anyRequest()
                 .antMatchers("/book/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated().and().csrf().disable().formLogin() // l'accès de fait via un formulaire
-                
+              
                 .loginPage("/login").failureUrl("/login?error=true") // fixer la page login
                 .defaultSuccessUrl("/home") // page d'accueil après login avec succès
                 .usernameParameter("email") // paramètres d'authentifications login et password
@@ -53,7 +53,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // route de deconnexion ici /logut
                 .logoutSuccessUrl("/login").and().exceptionHandling() // une fois deconnecté redirection vers login
                 
-                .accessDeniedPage("/403"); 
+                .accessDeniedPage("/403")
+                .and()
+                .httpBasic()
+                .and()
+                .formLogin().permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .csrf().disable(); 
     }
 
    // laisser l'accès aux ressources
