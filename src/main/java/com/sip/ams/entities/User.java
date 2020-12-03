@@ -3,11 +3,15 @@ package com.sip.ams.entities;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.sip.ams.entities.Commande;
+
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+
+import java.util.List;
 import java.util.Set;
 @Data
 @Entity
@@ -40,6 +44,10 @@ public class User {
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    
+    
+    
+    
     private Set<Role> roles;
     public int getId() {
 		return id;
@@ -77,6 +85,14 @@ public class User {
 	public void setActive(int active) {
 		this.active = active;
 	}
+	
+	@OneToMany (mappedBy="client_c",fetch=FetchType.LAZY,
+			cascade= {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH}
+			)
+
+	private List <Commande> orders;
+	
+	
 	public Set<Role> getRoles() {
 		return roles;
 	}

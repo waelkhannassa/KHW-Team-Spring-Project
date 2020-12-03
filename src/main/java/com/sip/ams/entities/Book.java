@@ -1,4 +1,5 @@
 package com.sip.ams.entities;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -40,7 +41,20 @@ public class Book {
 
 	private String author;
 	
+	@Column(name = "releaseDate")
+
+	private Date releaseDate;
 	
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+
+
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+
 	public Book() {
 
 	}

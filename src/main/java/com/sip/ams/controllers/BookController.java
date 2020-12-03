@@ -1,5 +1,9 @@
 package com.sip.ams.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -42,6 +46,8 @@ public class BookController {
 	}
 	
 	
+	
+	
 	@GetMapping("add")
 	//@ResponseBody
 	public String showaddform(Model model) {
@@ -52,14 +58,28 @@ public class BookController {
 	
 	
 	@PostMapping("add")
-	@ResponseBody
-	public String addBook(@Valid Book book,BindingResult result) {
+	public String addBook(@Valid Book book, BindingResult result, Model model,@RequestParam("releaseDate")String date,@RequestParam("files") MultipartFile[] files) {
 		if (result.hasErrors()) {
-			return "provider/addProvider";
-			}
-	bookrepository.save(book);
+			return "book/addBook";
+		}
+		StringBuilder fileName = new StringBuilder();
+		MultipartFile file = files[0];
+		Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+		fileName.append(file.getOriginalFilename());
+
+		try {
+			Files.write(fileNameAndPath, file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		book.setCoverImage(fileName.toString());
+
+		bookrepository.save(book);
+		return "redirect:list";
+
 	
-	return "POST";}
+
+	}
 	
 	
 	@GetMapping("delete/{id}")
@@ -81,6 +101,13 @@ public class BookController {
 		return "book/updateBook";
 	}
 	
+	@GetMapping("show/{id}")
+	public String ShowBookDetails(@PathVariable("id")int id,Model m) {
+		Book b = bookrepository.findById(id)
+				.orElseThrow(()-> new IllegalArgumentException("invalid book id"+id));
+		m.addAttribute("book", b);
+		return"book/showBook";
+	}
 	
 	
 	@PostMapping("update")

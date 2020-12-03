@@ -10210,6 +10210,7 @@ header.masthead h1 {
 							<table class="table">
   								 <thead class="thead-dark">
 									<tr>
+									<th scope="col">Cover Book</th>
 										<th scope="col">Title</th>
 										<th scope="col">Author</th>
 										<th scope="col">Price</th>
@@ -10221,6 +10222,8 @@ header.masthead h1 {
 								</thead>
 								<tbody>
 									<tr th:each="book : ${books}">
+									<td> <img  src="${book.coverImage}" width="70" height="80"/> </td>
+									
 										<td scope="row" th:text="${book.title}"></td>
 										<td scope="row" th:text="${book.author}"></td>
 										<td scope="row" th:text="${book.price}"></td>
