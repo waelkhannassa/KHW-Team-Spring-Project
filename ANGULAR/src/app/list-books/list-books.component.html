@@ -1,0 +1,31 @@
+<h1 align="center">Liste des livres:</h1>
+
+<h2>ajouter un nouveau livre : <button class="btn btn-primary" routerLink="/addBook"> add book </button> </h2>
+<table class="table dark">
+    <tr>
+        <th>ID</th>
+        <th>title</th>
+        <th>author</th>
+        <th>price</th>
+        <th>date release</th>
+        <th>cover image</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+
+
+    <tr *ngFor="let c of books">
+        <td>{{c.id}}</td>
+        <td>{{c.title}}</td>
+        <td>{{c.author}}</td>
+        <td>{{c.price}}</td>
+        <td>{{c.date}}</td>
+        <td><img src={{c.coverImage}} width="100" height="100" /></td>
+        <td><button class="btn btn-danger" (click)='deleteBook(c)'>Delete </button></td>
+        <td><button class="btn btn-warning" (click)="updateBook(c)"> update  </button></td>
+    </tr>
+
+
+
+
+</table>
