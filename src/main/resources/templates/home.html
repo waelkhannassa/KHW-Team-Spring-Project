@@ -1,117 +1,143 @@
-<!DOCTYPE html>
-
-
-
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
-	<meta charset="utf-8">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-	<title>Creative - Start Bootstrap Theme</title>
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-	<!-- Font Awesome icons (free version)-->
-	<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-	<!-- Google fonts-->
-	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-	<!-- Third party plugin CSS-->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
-	<!-- Core theme CSS (includes Bootstrap)-->
-	<link href="css/styles.css" rel="stylesheet" />
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>DashBoard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<style>
+.command {
+	background-color: rgba(255, 255, 255, .0);
+	border: none;
+	color: #9F9E9E;
+}
 
+.home {
+	position: absolute;
+}
+
+#title {
+	text-align: center;
+	width: 100%;
+	margin-top: 13%;
+	color: white;
+	font-size: 70px;
+	text-shadow: 5px 5px #343a40;
+}
+
+#copy {
+	text-align: center;
+	width: 100%;
+	color: white;
+	padding-top: 41%;
+	text-shadow: 2px 2px #343a40;
+}
+</style>
 </head>
+<body>
+	<!-- <div th:replace="fragments/header :: header" />  -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" ><i
+			class="fas fa-book"></i> AKA Bookstore</a>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul style="display: none;" id="admin" class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="http://127.0.0.1:82">Home</a></li>
 
-<body id="page-top">
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">Bookstore</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/commande/add">order</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">user</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
-				</ul>
-			</div>
+				<li class="nav-item admin"><a class="nav-link"
+					href="/book/list/">Book management</a></li>
+				<li class="nav-item admin">
+					
+						<div hidden sec:authentication="name" id="email"></div>
+				
+				
+				<li class="nav-item user"><form action="#"
+						th:action="@{/command/list}">
+
+						<input hidden type="text" id="in5" name="email" /> <input
+							class="command" type="submit" value="Command management" />
+					</form> <script type="text/javascript">
+						var x = document.getElementById("email").innerText;
+						document.getElementById("in5").value = x;
+					</script></li>
+				
+				
+				
+				
+				
+				
+				
+			
+				<li class="nav-item admin"><a class="nav-link"
+					href="/accounts/list/">Account management</a></li>
+			</ul>
+
+			<ul style="display: none;" id="user" class="navbar-nav mr-auto">
+
+           
+           
+           
+           
+            <div hidden sec:authentication="name" id="email"></div>
+			
+
+				<li class="nav-item user"><form action="#"
+						th:action="@{/command/list}">
+
+						<input hidden type="text" id="in1" name="email"  /><input
+							class="command" type="submit" value="My Commands" />
+					</form> <script type="text/javascript">
+						var x = document.getElementById("email").innerText;
+						document.getElementById("in1").value = x;
+					</script></li>
+
+
+				<li class="nav-item user"><form action="#"
+						th:action="@{panier/cart}">
+
+						<input hidden  type="text" id="in6" name="email" /> <input
+							class="command" type="submit" value="Cart" />
+					</form> <script type="text/javascript">
+						var x = document.getElementById("email").innerText;
+						document.getElementById("in6").value = x;
+					</script></li>
+			</ul>
+		</div>
+		<div>
+			<span th:style="'color: white'" sec:authentication="name"></span> <a
+				class="btn btn-primary mx-2" th:href="@{/logout}"><i
+				class="fas fa-sign-out-alt"></i>Sign Out</a>
+
 		</div>
 	</nav>
-	<!-- Masthead-->
-	<header class="masthead">
-		<div class="container h-100">
-			<div class="row h-100 align-items-center justify-content-center text-center">
-				<div class="col-lg-10 align-self-end">
-					<h1 class="text-uppercase text-white font-weight-bold">all the books you want</h1>
-					<hr class="divider my-4" />
-				</div>
-				<div class="col-lg-8 align-self-baseline">
-					<p class="text-white-75 font-weight-light mb-5"></p>
-					<a class="btn btn-primary btn-xl js-scroll-trigger" href="/book/list">start reading</a>
-				</div>
-			</div>
+	<div>
+		<div id="image" class="home">
+			<img th:src="@{uploads/home.jpg}" width=100% height=600px />
 		</div>
-	</header>
-	<!-- About-->
-	<section class="page-section bg-primary" id="about">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-8 text-center">
-					<h2 class="text-white mt-0">who are we</h2>
-
-					
-
-				</div>
-			</div>
-			<div class="row">
-						<div class="col-sm">
-							<div class="card" style="width: 16rem;">
-								<img src="assets\img\koussay2.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<p class="card-text">elkoll felkoll.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm">
-							<div class="card" style="width: 16rem;">
-								<img src="assets\img\ena.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<p class="card-text">ntaba3 tba3.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm">
-							<div class="card" style="width: 16rem;">
-								<img src="assets\img\wael.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<p class="card-text">el becha.</p>
-								</div>
-							</div>
-						</div>
-					</div>
+		<div id="title" class="home">
+			<p>Welcome to AKA</p>
+			<p>Bookstore</p>
 		</div>
-	</section>
-
-	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container">
-			<div class="small text-center text-muted">Copyright آ© 2020 - projet bookstore vermeg</div>
+		<div id="copy" class="home">
+			<p>Copyright © 2020 AKA Team Vermeg</p>
 		</div>
-	</footer>
-	<!-- Bootstrap core JS-->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Third party plugin JS-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js\scripts.js"></script>
+	</div>
+	<div hidden sec:authentication="principal.authorities" id="role"></div>
+	<script type="text/javascript">
+		var x = document.getElementById("role").innerText;
 
+		if (x == "[USER]")
+			document.getElementById("user").style.display = "contents";
+		else
+			document.getElementById("admin").style.display = "contents";
+	</script>
 </body>
-
 </html>
-
